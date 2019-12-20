@@ -19,7 +19,7 @@ The application is optimized with Node v11
 The app has responsive design for large, medium, and small sized device
 
 large: 
-![Large](<img src="./screenshots/large.png" width="400px"/> "Large device view")
+![Large](./screenshots/large.png "Large device view")
 
 medium: 
 ![medium](./screenshots/medium.png "medium device view")
