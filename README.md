@@ -10,14 +10,14 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.
 
-### node version
+### `node version`
 
 The application is optimized with Node v11
 
-### Responsive design
+### `Responsive design`
 
 The app has responsive design for large, medium, and small sized device
 
-## Live service
+## `Live service`
 
 live service at https://williams-sonoma-take-home.herokuapp.com/
