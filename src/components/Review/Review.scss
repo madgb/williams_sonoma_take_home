@@ -1,0 +1,21 @@
+@import "../../utils/variables.scss";
+
+.review-section {
+    padding: 3rem;
+
+    .inner {
+        justify-content: space-around;
+        padding: 0 5rem;
+        @media(max-width: $md) {
+            padding: 0;
+        }
+    
+        @media(max-width: $sm) {
+            padding: 0;
+        }
+
+        .value {
+            margin-left: 0.5rem;
+        }
+    }
+}

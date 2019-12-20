@@ -1,13 +1,19 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Detail from "./components/Detail";
+import List from "./components/List/List";
+import "./App.scss";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       groups: null,
-      paths: null
+      paths: null,
+      carouselImgArray: null,
+      toggleCarouselModal: true,
+      currModalHeroIndex: 0
     };
   }
 
@@ -32,33 +38,94 @@ class App extends Component {
         return error;
       });
   }
+
+  carouselTargetRender(index) {
+    const { groups } = this.state;
+    const carouselImgArray = [...groups[index].images];
+    carouselImgArray.unshift(groups[index].hero);
+    this.setState({ carouselImgArray });
+  }
+
+  setCurrModalHeroIndex(index) {
+    this.setState({ currModalHeroIndex: index });
+  }
+
+  openCarouselModal = index => {
+    this.setState({ toggleCarouselModal: true });
+    this.carouselTargetRender(index);
+  };
+
+  setcurrModalHeroIndex = index => {
+    this.setState({ currModalHeroIndex: index });
+  };
+
+  closeCarouselModal = e => {
+    e.preventDefault();
+    this.setState({
+      toggleCarouselModal: false,
+      currModalHeroIndex: 0
+    });
+  };
+
   render() {
-    const { paths } = this.state;
+    const {
+      paths,
+      groups,
+      toggleCarouselModal,
+      carouselImgArray,
+      currModalHeroIndex
+    } = this.state;
     return (
       <div className="App">
+        {toggleCarouselModal && carouselImgArray && (
+          <div className="carousel-modal">
+            <div className="close">
+              <button onClick={this.closeCarouselModal}>x</button>
+            </div>
+            <div className="hero">
+              <img
+                src={carouselImgArray[currModalHeroIndex].href}
+                alt={carouselImgArray[currModalHeroIndex].alt}
+              />
+            </div>
+            <div className="list flex">
+              {carouselImgArray.map((img, index) => (
+                <div
+                  className="carousel-list"
+                  key={index}
+                  onClick={() => this.setcurrModalHeroIndex(index)}
+                >
+                  <img src={img.href} alt={img.alt} />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         <Router>
-          <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                {paths &&
-                  paths.map(path => (
-                    <li>
-                      <Link to={`/${path.path}`}>{path.name}</Link>
-                    </li>
-                  ))}
-              </ul>
-            </nav>
+          <div className="app-wrapper">
             <Switch>
-              <Route path="/" exact render={() => <Home />} />
+              {groups && paths && (
+                <Route
+                  path="/"
+                  exact
+                  render={props => (
+                    <List {...props} groups={groups} paths={paths} />
+                  )}
+                />
+              )}
               {paths &&
-                paths.map(path => (
+                paths.map((path, index) => (
                   <Route
+                    key={index}
                     path={`/${path.path}`}
                     render={props => (
-                      <About {...props} path={path} data={this.state.groups} />
+                      <Detail
+                        {...props}
+                        path={path}
+                        data={groups}
+                        openCarouselModal={this.openCarouselModal}
+                        index={index}
+                      />
                     )}
                   />
                 ))}
@@ -71,17 +138,3 @@ class App extends Component {
 }
 
 export default App;
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About({ path, data }) {
-  const id = path.id;
-  const itemInfo = data.filter(item => item.id === id)[0];
-
-  return (
-  <h2>
-    {itemInfo.links.www}
-  </h2>);
-}

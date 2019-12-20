@@ -1,0 +1,14 @@
+@import "../utils/variables.scss";
+
+.detail-wrapper {
+
+    .info-part {
+        padding: 3rem;
+        @media(max-width: $md){
+            padding: 1rem;
+        }
+        @media(max-width: $sm){
+            padding: 0;
+        }
+    }
+}
