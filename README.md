@@ -19,20 +19,20 @@ The application is optimized with Node v11
 The app has responsive design for large, medium, and small sized device
 
 large: 
-![Large](./screenshots/large.png "Large device view")
+![Large](./screenshots/large.png =400x "Large device view")
 
 medium: 
-![medium](./screenshots/medium.png "medium device view")
+![medium](./screenshots/medium.png =400x "medium device view")
 
 small: 
-![small](./screenshots/small.png "small device view")
+![small](./screenshots/small.png =400x "small device view")
 
 ### `Carousel`
 
 Carousel without any library
 
 carousel: 
-![carousel](./screenshots/carousel.png "carousel view")
+![carousel](./screenshots/carousel.png =400x "carousel view")
 
 ### `Live service`
 
