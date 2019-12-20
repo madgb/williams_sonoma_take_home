@@ -17,18 +17,18 @@
 
         img {
             width: 100%;
-            max-width: 700px;
+            max-width: 400px;
 
             @media(max-width: $lg) {
-                max-width: 500px;
+                max-width: 350px;
             }
         
             @media(max-width: $md) {
-                max-width: 400px;
+                max-width: 300px;
             }
         
             @media(max-width: $sm) {
-                max-width: 250px;
+                max-width: 200px;
             }
         }
     }
