@@ -6,7 +6,9 @@ export default function Info({ link, name, priceRange }) {
   return (
     <section className="info">
       <h1 className="name">
-        <a href={link} target="_blank" rel="noopener noreferrer">{name.replace(/&amp;/g, "&")}</a>
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          {name.replace(/&amp;/g, "&")}
+        </a>
       </h1>
       <div className="price-wrapper flex">
         <div

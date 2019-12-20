@@ -8,18 +8,18 @@ export default function List({ groups, paths }) {
   return (
     <section className="list-wrapper flex">
       {groups.map((group, index) => (
-          <div className="inner" key={index}>
-              <Link to={`/${paths[index].path}`}>
-                <div className="hero">
-                    <img src={group.hero.href} alt={group.hero.alt} />
-                </div>
-              </Link>
-              <Info
-                link={group.links.www}
-                name={group.name}
-                priceRange={group.priceRange}
-              />
-          </div>
+        <div className="inner" key={index}>
+          <Link to={`/${paths[index].path}`}>
+            <div className="hero">
+              <img src={group.hero.href} alt={group.hero.alt} />
+            </div>
+          </Link>
+          <Info
+            link={group.links.www}
+            name={group.name}
+            priceRange={group.priceRange}
+          />
+        </div>
       ))}
     </section>
   );
