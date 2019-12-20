@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Detail from "./components/Detail";
 import List from "./components/List/List";
+import CarouselModal from "./components/CarouselModal/CarouselModal";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import "./App.scss";
 
 class App extends Component {
@@ -78,29 +81,14 @@ class App extends Component {
     return (
       <div className="App">
         {toggleCarouselModal && carouselImgArray && (
-          <div className="carousel-modal">
-            <div className="close">
-              <button onClick={this.closeCarouselModal}>x</button>
-            </div>
-            <div className="hero">
-              <img
-                src={carouselImgArray[currModalHeroIndex].href}
-                alt={carouselImgArray[currModalHeroIndex].alt}
-              />
-            </div>
-            <div className="list flex">
-              {carouselImgArray.map((img, index) => (
-                <div
-                  className="carousel-list"
-                  key={index}
-                  onClick={() => this.setcurrModalHeroIndex(index)}
-                >
-                  <img src={img.href} alt={img.alt} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <CarouselModal
+            closeCarouselModal={this.closeCarouselModal}
+            carouselImgArray={carouselImgArray}
+            currModalHeroIndex={currModalHeroIndex}
+            setcurrModalHeroIndex={this.setcurrModalHeroIndex}
+          />
         )}
+        <Header />
         <Router>
           <div className="app-wrapper">
             <Switch>
@@ -132,6 +120,7 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
+        <Footer />
       </div>
     );
   }

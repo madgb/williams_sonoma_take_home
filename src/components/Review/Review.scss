@@ -3,6 +3,10 @@
 .review-section {
     padding: 3rem;
 
+    @media(max-width: $sm) {
+        padding: 1rem;
+    }
+
     .inner {
         justify-content: space-around;
         padding: 0 5rem;
