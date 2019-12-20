@@ -18,6 +18,22 @@ The application is optimized with Node v11
 
 The app has responsive design for large, medium, and small sized device
 
-## `Live service`
+large: 
+![Large](./screenshots/large.png "Large device view")
+
+medium: 
+![medium](./screenshots/medium.png "medium device view")
+
+small: 
+![small](./screenshots/small.png "small device view")
+
+### `Carousel`
+
+Carousel without any library
+
+carousel: 
+![carousel](./screenshots/carousel.png "carousel view")
+
+### `Live service`
 
 live service at https://williams-sonoma-take-home.herokuapp.com/
